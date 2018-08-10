@@ -1,6 +1,5 @@
 class ScraperWorker
   include Sidekiq::Worker
- 
   def perform(keyword)
     require 'rake'
     require 'sidekiq/api'

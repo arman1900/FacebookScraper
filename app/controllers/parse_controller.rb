@@ -1,7 +1,7 @@
 class ParseController < ApplicationController
     #skip_before_action :verify_authenticity_token, :only => [:scrape]
     def scrape
-        ScraperWorker.new.perform(params[:keyword])
+        ScraperWorker.perform_at(10.seconds.from_now,params[:keyword])
         redirect_to action: 'show_posts'
     end
     def show_posts
