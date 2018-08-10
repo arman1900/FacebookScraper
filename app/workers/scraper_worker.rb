@@ -1,7 +1,6 @@
 class ScraperWorker
   include Sidekiq::Worker
   def perform(keyword)
-    puts 'ERROR'
     require 'rake'
     require 'sidekiq/api'
     Sidekiq::RetrySet.new.clear

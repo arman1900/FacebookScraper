@@ -1,7 +1,11 @@
 class ParseController < ApplicationController
-    #skip_before_action :verify_authenticity_token, :only => [:scrape]
+    skip_before_action :verify_authenticity_token, :only => [:scrape]
     def scrape
-        ScraperWorker.perform_at(10.seconds.from_now,params[:keyword])
+        require 'rake'
+    require 'sidekiq/api'
+    Rake::Task.clear
+    Facebookscraper101::Application.load_tasks
+        Rake::Task['parse:facebook'].invoke(params[:keyword])
         redirect_to action: 'show_posts'
     end
     def show_posts

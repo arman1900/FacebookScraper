@@ -11,7 +11,7 @@ namespace :parse do
                 opts.merge!( options: {binary: chrome_bin})
             end 
             Post.destroy_all
-            browser = Watir::Browser.new :chrome, opts
+            browser = Watir::Browser.new :chrome, switches: ['--incognito']
             browser.goto("facebook.com")
             browser.text_field(name: "email").set('arma23430@gmail.com')
             browser.text_field(name: 'pass').set('arsenalsuper1900')    
@@ -20,7 +20,6 @@ namespace :parse do
             browser.text_field(name:"q").set(args.keyword)  
             browser.button(type: "submit",).click
             browser.div(class:'_4xjz',  index:1).click
-            browser.span(class:"_5dw8", index:0).click
             sleep 1
             index=0
             body_index=0
@@ -30,14 +29,14 @@ namespace :parse do
             comment_index=0
             like_index=0
             more_comments_index=0
-            while index<=10
-                browser.element(class:'_401d',index:index).click
+            while index<=2
+                browser.element(class:'_o02',index:index).click
                 sleep 1             
                     if browser.element(class:'_62xw',index:location_index).exist?
                         location=browser.element(class:'_62xw',index:location_index).text
                         location_index=location_index+1
                     end 
-                    if browser.element(class:'_1g5v',index:index).exist?
+                    if browser.element(class:'_1g5v',index:likes_index).exist?
                         likes=browser.element(class:'_1g5v',index:likes_index).text
                         likes_index=likes_index+1 
                     end
@@ -45,12 +44,12 @@ namespace :parse do
                         comments=browser.element(class:'_-56', index:comments_index).text 
                         comments_index=comments_index+1
                     end
-                    date=browser.element(class:'_5ptz',index:index).title if browser.element(class:'_5ptz',index:index).exist?
+                    date=browser.element(class:'_5ptz',index:0).title if browser.element(class:'_5ptz',index:0).exist?
                     author=browser.element(class:'_lic',index:index).text if browser.element(class:'_lic',index:index).exist?
-                    if browser.element(class:"_5pbx", index:body_index).exist?
-                        body=browser.element(class:"_5pbx", index:body_index).text
-                        body_index=body_index+1
+                    if browser.element(class:"_5pbx").exist?
+                        body=browser.element(class:"_5pbx").text
                     end
+                    browser.refresh
                 Post.create(comments: comments,Location: location,Creation_Date: date,body: body,author: author,likes: likes)
                 date=nil 
                 comments=nil 
