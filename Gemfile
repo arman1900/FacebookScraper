@@ -8,7 +8,6 @@ gem 'httparty'
 gem 'watir'
 gem "whenever"
 gem 'watir-scroll'
-gem 'delayed_job_active_record'
 gem 'sidekiq'
 gem 'taskiq', '0.1.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
