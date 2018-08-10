@@ -11,16 +11,16 @@ namespace :parse do
                 opts.merge!( options: {binary: chrome_bin})
             end 
             Post.destroy_all
-            browser = Watir::Browser.new :chrome, opts
+            browser = Watir::Browser.new :chrome, switches: ['--incognito']
             browser.goto("facebook.com")
             browser.text_field(name: "email").set('arma23430@gmail.com')
             browser.text_field(name: 'pass').set('arsenalsuper1900')    
             browser.button(type: "submit").click
             browser.goto('facebook.com')
             browser.text_field(name:"q").set(args.keyword)  
-            browser.button(type: "submit", index:0).click
-            browser.div(class:'_4xjz',  text:"Posts").click
-            browser.span(class:"_5dw8", text:"See All").click
+            browser.button(type: "submit",).click
+            browser.div(class:'_4xjz',  index:1).click
+            browser.span(class:"_5dw8", index:0).click
             sleep 1
             index=0
             body_index=0
