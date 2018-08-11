@@ -13,8 +13,8 @@ namespace :parse do
             Post.destroy_all
             browser = Watir::Browser.new :chrome,  opts
             browser.goto("facebook.com")
-            browser.text_field(name: "email").set('facebookscraper101@gmail.com')
-            browser.text_field(name: 'pass').set('facebookscraper')    
+            browser.text_field(name: "email").set('arma23430@gmail.com')
+            browser.text_field(name: 'pass').set('arsenalsuper1900')    
             browser.button(type: "submit").click
             browser.goto('facebook.com')
             browser.text_field(name:"q").set(args.keyword)  
@@ -35,8 +35,8 @@ namespace :parse do
                 sleep 1
                 parent=browser.div(class:'_3ccb',index:0)
                 sleep 1             
-                    if browser.element(class:'_62xw',index:location_index+1).exist?
-                        child=browser.div(class:'_62xw',index:location_index+1)
+                    if browser.element(class:'_62xw',index:location_index).exist?
+                        child=browser.div(class:'_62xw',index:location_index    )
                         element_browser = parent.elements.any? {|e| e=child} rescue false
                         if element_browser
                             location=child.text
