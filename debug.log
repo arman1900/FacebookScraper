@@ -59,3 +59,5 @@
 [0811/071151.741:ERROR:exception_snapshot_win.cc(88)] thread ID 22952 not found in process
 [0811/073033.748:ERROR:process_reader_win.cc(123)] NtOpenThread: {Отказано в доступе} Процесс запросил доступ к объекту, но права на доступ не предоставлены. (0xc0000022)
 [0811/073033.749:ERROR:exception_snapshot_win.cc(88)] thread ID 23528 not found in process
+[0811/082612.629:ERROR:process_reader_win.cc(123)] NtOpenThread: {Отказано в доступе} Процесс запросил доступ к объекту, но права на доступ не предоставлены. (0xc0000022)
+[0811/082612.630:ERROR:exception_snapshot_win.cc(88)] thread ID 10676 not found in process
