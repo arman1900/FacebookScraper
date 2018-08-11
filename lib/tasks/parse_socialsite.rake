@@ -11,10 +11,10 @@ namespace :parse do
                 opts.merge!( options: {binary: chrome_bin})
             end 
             Post.destroy_all
-            browser = Watir::Browser.new :chrome, opts
+            browser = Watir::Browser.new :chrome,  opts
             browser.goto("facebook.com")
-            browser.text_field(name: "email").set('arma23430@gmail.com')
-            browser.text_field(name: 'pass').set('arsenalsuper1900')    
+            browser.text_field(name: "email").set('facebookscraper101@gmail.com')
+            browser.text_field(name: 'pass').set('facebookscraper')    
             browser.button(type: "submit").click
             browser.goto('facebook.com')
             browser.text_field(name:"q").set(args.keyword)  
@@ -79,18 +79,18 @@ namespace :parse do
                                 if browser.element(class:'UFIPagerLink', index:more_comments_index).exist?
                                     puts more_comments_index
                                     browser.element(class:'UFIPagerLink', index:more_comments_index).click
-                                    sleep 3
+                                    sleep 1
                                 else 
                                     more_comments_index=40
                                 end
                                 more_comments_index=more_comments_index+1
                             end
-                            sleep 3
+                            sleep 1
                             while(replies<=40)
                                 if browser.element(class:'UFICommentLink',index:replies).exist?
                                     puts replies
                                     browser.element(class:'UFICommentLink',index:replies).click
-                                    sleep 3
+                                    sleep 1
                                 else
                                     replies=40
                                 end
@@ -100,9 +100,9 @@ namespace :parse do
                     end
                     more_comments_index=0
                     replies=0
-                    i=comment_index
-                    sleep 3
-                    while comment_index<i+comments.to_i
+                    j=[comments.to_i,50].min
+                    sleep 1
+                    while comment_index<j
                         date=browser.element(class:'UFISutroCommentTimestamp', index:comment_index).text if browser.element(class:'UFISutroCommentTimestamp', index:comment_index).exist?
                         author=browser.element(class:'UFICommentActorName', index:comment_index).text if browser.element(class:'UFICommentActorName', index:comment_index).exist?
                         body= browser.element(class:'UFICommentBody', index:comment_index).text if browser.element(class:'UFICommentBody', index:comment_index).exist?
