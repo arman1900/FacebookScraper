@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2018_08_08_180122) do
 
   create_table "posts", force: :cascade do |t|
-    t.text "body"
+    t.string "text"
     t.string "author"
     t.string "likes"
     t.datetime "created_at", null: false
